@@ -9,14 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get Stars and License
+        with:
+          fetch-depth: 0
+      - name: Parse publiccode.yml
         uses: ./
         id: sample
-        with:
-          repo: "italia/publiccode-parser-action"
-      - name: Check Stars and License
-        run: |
-          test -n "${{ steps.sample.outputs.stars }}"
-          echo "${{ steps.sample.outputs.stars }}"
-          test -n "${{ steps.sample.outputs.license }}"
-          echo "${{ steps.sample.outputs.license }}"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
