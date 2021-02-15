@@ -1,7 +1,7 @@
 {
-  "name": "js-action-template",
+  "name": "publiccode-version-action",
   "version": "0.0.0",
-  "description": "GitHub JavaScript action template",
+  "description": "GitHub JavaScript action to update publiccode.yml version automatically",
   "main": "index.js",
   "scripts": {
     "build": "ncc build index.js --license licenses.txt"
@@ -18,7 +18,8 @@
   "homepage": "https://github.com/italia/js-action-template#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0"
+    "js-yaml": "^4.0.0",
+    "simple-git": "^2.34.2"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.27.0"
