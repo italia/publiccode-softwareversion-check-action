@@ -1,10 +1,10 @@
-publiccodeYmlVersion: "0.2"
+publiccodeYmlVersion: '0.2'
 applicationSuite: italia-action
-url: "https://github.com/italia/publiccode-version-action"
+url: https://github.com/italia/publiccode-version-action
 name: publiccode-version-action
-releaseDate: "2020-02-24"
+releaseDate: '2020-02-24'
 softwareType: standalone/web
-softwareVersion: 1.0.0
+softwareVersion: v0.3.2
 developmentStatus: stable
 logo: logo.png
 platforms:
@@ -15,20 +15,18 @@ categories:
   - data-collection
 description:
   en:
-    apiDocumentation: "https://github.com/italia/publiccode-version-action"
-    documentation: "https://github.com/italia/publiccode-version-action"
+    apiDocumentation: https://github.com/italia/publiccode-version-action
+    documentation: https://github.com/italia/publiccode-version-action
     features:
       - Feature one
     genericName: Github Action
     longDescription: >
       This Github Action is being developed while paying a lot of attention to 
-      user  privacy and a number of measures have been taken to protect it. For  
-      example, the app collects **no personal data that would disclose the 
-      user’s identity,** such as the user’s name, age, address, email, or phone 
-      number.
-    shortDescription: >-
-      Short description
-
+      user  privacy and a number of measures have been taken to protect it.
+      For   example, the app collects **no personal data that would disclose
+      the  user’s identity,** such as the user’s name, age, address, email, or
+      phone  number.
+    shortDescription: Short description
 intendedAudience:
   countries:
     - it
@@ -36,7 +34,7 @@ intendedAudience:
     - ci
     - cd
 it:
-  countryExtensionVersion: "0.2"
+  countryExtensionVersion: '0.2'
   riuso:
     codiceIPA: pcm
   conforme:
@@ -50,8 +48,7 @@ it:
     spid: false
 legal:
   license: AGPL-3.0-only
-  mainCopyrightOwner: >-
-    Italia
+  mainCopyrightOwner: Italia
   repoOwner: Italia
 localisation:
   availableLanguages:
