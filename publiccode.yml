@@ -4,7 +4,7 @@ url: https://github.com/italia/awesome-italia
 name: awesome-italia
 releaseDate: '2020-02-24'
 softwareType: standalone/web
-softwareVersion: v0.1.1
+softwareVersion: v0.3.2
 developmentStatus: stable
 logo: logo.png
 platforms:
