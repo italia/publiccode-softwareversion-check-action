@@ -9,14 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get Stars and License
-        uses: ./
-        id: sample
         with:
-          repo: "italia/publiccode-parser-action"
-      - name: Check Stars and License
+          fetch-depth: 0
+      - uses: italia/publiccode-parser-action@v0.0.2-alpha
+      - name: Parse publiccode.yml
+        uses: ./
+        id: pva
+      - name: Test without tags
         run: |
-          test -n "${{ steps.sample.outputs.stars }}"
-          echo "${{ steps.sample.outputs.stars }}"
-          test -n "${{ steps.sample.outputs.license }}"
-          echo "${{ steps.sample.outputs.license }}"
+          test "" = "${{ steps.pva.outputs.version }}"
+      - name: Tag your code
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git tag -a v0.3.2 -m "v0.3.2" 
+      - name: Parse publiccode.yml with wrong version
+        uses: ./
+        continue-on-error: true
+        id: pvasecond
+      - name: Test that version has been committed
+        run: |
+          test "v0.3.2" = "${{ steps.pvasecond.outputs.version }}"
+          test "softwareVersion: v0.3.2" = "$(cat publiccode.yml | grep -Eo 'softwareVersion:(.*)')"

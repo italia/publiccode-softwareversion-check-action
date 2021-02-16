@@ -1,32 +1,58 @@
-# GitHub JavaScript action template
+# publiccode.yml version action for Github
 
 [![Join the #publiccode channel](https://img.shields.io/badge/Slack%20channel-%23publiccode-blue.svg?logo=slack)](https://developersitalia.slack.com/messages/CAM3F785T)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
 
-This is a template repository for [creating a GitHub JavaScript action](https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action).
+This action checks whether `softwareVersion` in your [publiccode.yml file](https://github.com/italia/publiccode.yml)
+is aligned with the latest tag.
 
 Click `Use this template` button to create your action based on this template.
-
-A sample action to get GitHub star counts and license from a given repository.
 
 ## Examples
 
 Include this action in your repo by creating 
-`.github/workflows/js-action-template.yml`and edit where needed:
+`.github/workflows/publiccode-versioning.yml`and edit where needed:
 
 ```yml
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  examplejob:
+  test:
     runs-on: ubuntu-latest
-    name: Get Stars and License
     steps:
-    - uses: actions/checkout@v2
-    - uses: italia/js-action-template@v1
-      with:
-        repo: "italia/publiccode-parser-action"
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Parse publiccode.yml
+        uses: italia/publiccode-version-action
 ```
+
+You can easily create a pull request to update `softwareVersion` in your 
+`publiccode.yml` file.
+
+```yml
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Parse publiccode.yml
+        uses: italia/publiccode-version-action
+        id: pva
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        if: failure()
+        with:
+          title: "feat: update softwareVersion ${{ steps.pva.outputs.version }} in publiccode.yml"
+          branch: feature/publiccode-${{ steps.pva.outputs.version }}
+```
+
+See [Create Pull Request Github action documentation](https://github.com/marketplace/actions/create-pull-request) 
+for more info
 
 ## Build the action
 
@@ -57,7 +83,7 @@ This software is maintained by the
 
 ## License
 
-© 2020 Dipartimento per la Trasformazione Digitale - Presidenza del Consiglio dei
+© 2021 Dipartimento per la Trasformazione Digitale - Presidenza del Consiglio dei
 Ministri
 
 Licensed under the EUPL.
