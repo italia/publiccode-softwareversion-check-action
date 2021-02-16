@@ -4,7 +4,7 @@ url: https://github.com/italia/awesome-italia
 name: awesome-italia
 releaseDate: '2020-02-24'
 softwareType: standalone/web
-softwareVersion: v0.1.1
+softwareVersion: v0.3.2
 developmentStatus: stable
 logo: logo.png
 platforms:
@@ -25,11 +25,11 @@ description:
       user  privacy and a number of measures have been taken to protect it.
       For   example, the app collects **no personal data that would disclose
       the  user’s identity,** such as the user’s name, age, address, email, or
-      phone  number. This Github Action is being developed while paying attention
-      to user  privacy and a number of measures have been taken to protect it.
-      For   example, the app collects **no personal data that would disclose
-      the  user’s identity,** such as the user’s name, age, address, email, or
-      phone  number.
+      phone  number. This Github Action is being developed while paying
+      attention to user  privacy and a number of measures have been taken to
+      protect it. For   example, the app collects **no personal data that would
+      disclose the  user’s identity,** such as the user’s name, age, address,
+      email, or phone  number.
     shortDescription: Short description
 intendedAudience:
   countries:
