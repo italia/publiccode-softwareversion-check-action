@@ -1,21 +1,24 @@
-name: 'Action name'
+name: 'publiccode-version-action'
 description: 'Action description'
 author: 'italia'
 
 inputs:
-  github_token:
-    description: 'GITHUB_TOKEN'
-    default: '${{ github.token }}'
-  repo:
-    description: 'GitHub repository. e.g. italia/publiccode-parser-action'
-    default: '${{ github.repository }}'
-    required: true
+  publiccode:
+    description: 'publiccode.yml path'
+    required: false
+    default: 'publiccode.yml'
+  gitname:
+    description: 'Git name configuration for bump commit'
+    required: false
+    default: 'Publiccode bot'
+  gitmail:
+    description: 'Git mail configuration for bump commit'
+    required: false
+    default: ''
 
 outputs:
-  stars:
-    description: 'The stars of the repository'
-  license:
-    description: 'The license used in the repository'
+  version:
+    description: 'New version of softwareVersion in publiccode.yml'
 
 runs:
   using: 'node12'
