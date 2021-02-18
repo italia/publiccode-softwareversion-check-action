@@ -1,5 +1,5 @@
 {
-  "name": "publiccode-version-action",
+  "name": "publiccode-softwareversion-check-action",
   "version": "0.0.0",
   "description": "GitHub JavaScript action to update publiccode.yml version automatically",
   "main": "index.js",

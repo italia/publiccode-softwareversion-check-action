@@ -1,10 +1,12 @@
-# publiccode.yml version action for Github
+# publiccode.yml softwareVersion check action for Github
 
 [![Join the #publiccode channel](https://img.shields.io/badge/Slack%20channel-%23publiccode-blue.svg?logo=slack)](https://developersitalia.slack.com/messages/CAM3F785T)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
 
 This action checks whether `softwareVersion` in your [publiccode.yml file](https://github.com/italia/publiccode.yml)
-is aligned with the latest tag.
+is aligned with the latest tag. It's also ready to work in conjunction with
+`peter-evans/create-pull-request` action to update `softwareVersion` using a 
+pull request.
 
 Click `Use this template` button to create your action based on this template.
 
@@ -24,7 +26,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Parse publiccode.yml
-        uses: italia/publiccode-version-action
+        uses: italia/publiccode-softwareversion-check-action
 ```
 
 You can easily create a pull request to update `softwareVersion` in your 
@@ -41,7 +43,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Parse publiccode.yml
-        uses: italia/publiccode-version-action
+        uses: italia/publiccode-softwareversion-check-action
         id: pva
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
