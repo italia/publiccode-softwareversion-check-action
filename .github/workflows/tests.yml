@@ -12,9 +12,13 @@ jobs:
         with:
           fetch-depth: 0
       - uses: italia/publiccode-parser-action@v0.0.2-alpha
+        with:
+          publiccode: 'data/publiccode.yml'
       - name: Parse publiccode.yml
         uses: ./
         id: pva
+        with:
+          publiccode: 'data/publiccode.yml'
       - name: Test without tags
         run: |
           test "" = "${{ steps.pva.outputs.version }}"
@@ -27,7 +31,9 @@ jobs:
         uses: ./
         continue-on-error: true
         id: pvasecond
+        with:
+          publiccode: 'data/publiccode.yml'
       - name: Test that version has been committed
         run: |
           test "v0.3.2" = "${{ steps.pvasecond.outputs.version }}"
-          test "softwareVersion: v0.3.2" = "$(cat publiccode.yml | grep -Eo 'softwareVersion:(.*)')"
+          test "softwareVersion: v0.3.2" = "$(cat data/publiccode.yml | grep -Eo 'softwareVersion:(.*)')"

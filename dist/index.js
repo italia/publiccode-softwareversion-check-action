@@ -15,7 +15,7 @@ let main = async () => {
   try {
     const git = simpleGit();
     const tag = (await git.tags()).latest
-    const publiccode = 'publiccode.yml'
+    const publiccode = core.getInput('publiccode')
     let docContent = fs.readFileSync(publiccode, 'utf8')
     const doc = yaml.load(docContent)
 

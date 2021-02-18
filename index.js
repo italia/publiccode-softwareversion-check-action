@@ -8,7 +8,7 @@ let main = async () => {
   try {
     const git = simpleGit();
     const tag = (await git.tags()).latest
-    const publiccode = 'publiccode.yml'
+    const publiccode = core.getInput('publiccode')
     let docContent = fs.readFileSync(publiccode, 'utf8')
     const doc = yaml.load(docContent)
 
@@ -20,7 +20,7 @@ let main = async () => {
       git.addConfig('user.email', core.getInput('gitmail'))
       docContent = docContent.replace(/softwareVersion:.*/, `softwareVersion: ${tag}`)
       fs.writeFileSync(publiccode, docContent, 'utf8')
-      git.add('./*').commit(`feat: bump ${publiccode} to version ${tag}`)
+      git.add('.').commit(`feat: bump ${publiccode} to version ${tag}`)
       throw `Current ${publiccode} should contain ${tag} version`
     }
   }
