@@ -1,5 +1,5 @@
 name: 'publiccode-softwareversion-check-action'
-description: 'This action checks whether softwareVersion in your publiccode.yml file is aligned with the latest tag and is ready to work in conjunction with peter-evans/create-pull-request action to update softwareVersion using a pull request.'
+description: 'JavaScript GitHub action to check publiccode.yml softwareVersion automatically.'
 author: 'italia'
 
 inputs:

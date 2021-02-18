@@ -1,7 +1,7 @@
 {
   "name": "publiccode-softwareversion-check-action",
-  "version": "0.0.0",
-  "description": "GitHub JavaScript action to update publiccode.yml version automatically",
+  "version": "1.0.0",
+  "description": "JavaScript GitHub action to check publiccode.yml softwareVersion automatically",
   "main": "index.js",
   "scripts": {
     "build": "ncc build index.js --license licenses.txt"
