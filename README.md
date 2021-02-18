@@ -10,6 +10,16 @@ pull request.
 
 Click `Use this template` button to create your action based on this template.
 
+## Inputs
+
+The following inputs briefly explained here are fully declared and documented in the [action.yaml](action.yaml):
+
+* `publiccode` [**Optional**] - publiccode.yml path (default `publiccode.yml`)
+
+* `gitname` [**Optional**] - Git name configuration for bump commit if you use a Pull Request action (default `Publiccode bot`)
+
+* `gitmail` [**Optional**] - Git mail configuration for bump commit if you use a Pull Request action (default `''`)
+
 ## Examples
 
 Include this action in your repo by creating 
