@@ -3,10 +3,11 @@
 [![Join the #publiccode channel](https://img.shields.io/badge/Slack%20channel-%23publiccode-blue.svg?logo=slack)](https://developersitalia.slack.com/messages/CAM3F785T)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
 
-This action checks whether `softwareVersion` in your [publiccode.yml file](https://github.com/italia/publiccode.yml)
-is aligned with the latest tag. It's also ready to work in conjunction with
-`peter-evans/create-pull-request` action to update `softwareVersion` using a 
-pull request.
+This action checks whether `softwareVersion` and `releaseDate` in your 
+[publiccode.yml file](https://github.com/italia/publiccode.yml) is 
+aligned with the latest tag. It's also ready to work in conjunction with
+`peter-evans/create-pull-request` action to update fields in `publiccode.yml` 
+using a pull request.
 
 Click `Use this template` button to create your action based on this template.
 
@@ -23,7 +24,7 @@ The following inputs briefly explained here are fully declared and documented in
 ## Examples
 
 Include this action in your repo by creating 
-`.github/workflows/publiccode-versioning.yml`and edit where needed:
+`.github/workflows/publiccode-versioning.yml` and edit where needed:
 
 ```yml
 on: [push]
@@ -39,8 +40,8 @@ jobs:
         uses: italia/publiccode-softwareversion-check-action
 ```
 
-You can easily create a pull request to update `softwareVersion` in your 
-`publiccode.yml` file.
+You can easily create a pull request to update fields in your `publiccode.yml` 
+file.
 
 ```yml
 on: [push]

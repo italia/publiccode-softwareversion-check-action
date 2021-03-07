@@ -1,5 +1,5 @@
 name: 'publiccode-softwareversion-check-action'
-description: 'JavaScript GitHub action to check publiccode.yml softwareVersion automatically.'
+description: 'JavaScript GitHub action to check publiccode.yml softwareVersion and releaseDate automatically.'
 author: 'italia'
 
 inputs:
@@ -18,7 +18,9 @@ inputs:
 
 outputs:
   version:
-    description: 'New version of softwareVersion in publiccode.yml'
+    description: 'New version of softwareVersion field in publiccode.yml'
+  releaseDate:
+    description: 'New release date of releaseDate field in publiccode.yml'
 
 runs:
   using: 'node12'
