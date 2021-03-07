@@ -14,6 +14,11 @@ jobs:
       - uses: italia/publiccode-parser-action@v0.0.2-alpha
         with:
           publiccode: 'data/publiccode.yml'
+      - name: Prepare testing env
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git tag -d `git tag | grep -E '.'`
       - name: Parse publiccode.yml
         uses: ./
         id: pva
@@ -24,8 +29,6 @@ jobs:
           test "" = "${{ steps.pva.outputs.version }}"
       - name: Tag your code
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
           git tag -a v0.3.2 -m "v0.3.2" 
       - name: Parse publiccode.yml with wrong version
         uses: ./
@@ -36,4 +39,6 @@ jobs:
       - name: Test that version has been committed
         run: |
           test "v0.3.2" = "${{ steps.pvasecond.outputs.version }}"
+          test "$( echo $(date "+%Y-%m-%d") )" = "${{ steps.pvasecond.outputs.releaseDate }}"
           test "softwareVersion: v0.3.2" = "$(cat data/publiccode.yml | grep -Eo 'softwareVersion:(.*)')"
+          test "releaseDate: '$( echo $(date "+%Y-%m-%d") )'" = "$(cat data/publiccode.yml | grep -Eo 'releaseDate:(.*)')"
