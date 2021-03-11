@@ -37,7 +37,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Parse publiccode.yml
-        uses: italia/publiccode-softwareversion-check-action
+        uses: italia/publiccode-softwareversion-check-action@v1.1.0
 ```
 
 You can easily create a pull request to update fields in your `publiccode.yml` 
