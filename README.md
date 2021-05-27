@@ -15,6 +15,8 @@ Click `Use this template` button to create your action based on this template.
 
 The following inputs briefly explained here are fully declared and documented in the [action.yaml](action.yaml):
 
+* `remoterepo` [**Optional**] - Git url of the remote repository you want to check (default `''`)
+
 * `publiccode` [**Optional**] - publiccode.yml path (default `publiccode.yml`)
 
 * `gitname` [**Optional**] - Git name configuration for bump commit if you use a Pull Request action (default `Publiccode bot`)

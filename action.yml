@@ -3,6 +3,10 @@ description: 'JavaScript GitHub action to check publiccode.yml softwareVersion a
 author: 'italia'
 
 inputs:
+  remoterepo:
+    description: 'Git url of the remote repository you want to check'
+    required: false
+    default: ''
   publiccode:
     description: 'publiccode.yml path'
     required: false
