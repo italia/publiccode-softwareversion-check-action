@@ -7,7 +7,8 @@ This action checks whether `softwareVersion` and `releaseDate` in your
 [publiccode.yml file](https://github.com/italia/publiccode.yml) is 
 aligned with the latest tag. It's also ready to work in conjunction with
 `peter-evans/create-pull-request` action to update fields in `publiccode.yml` 
-using a pull request.
+using a pull request. You can also specify a remote repository, see 
+[Deal with a remote repository](#deal-with-an-remote-repository)
 
 Click `Use this template` button to create your action based on this template.
 
@@ -68,8 +69,43 @@ jobs:
           branch: feature/publiccode-${{ steps.pva.outputs.version }}
 ```
 
-See [Create Pull Request GitHub action documentation](https://github.com/marketplace/actions/create-pull-request) 
+See ["Create Pull Request - GitHub action" documentation](https://github.com/marketplace/actions/create-pull-request) 
 for more info
+
+### Deal with a remote repository
+
+If you need to keep your `publiccode.yml` in another repository you can still 
+fetch that repo directly from the action using `remoterepo` parameter and use
+a cron to check whether the version is changed periodically.
+
+```yml
+on:
+  schedule:
+    - cron:  '30 17 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: publiccode-softwareversion-check-action
+        uses: italia/publiccode-softwareversion-check-action@master
+        id: pva
+        with:
+          remoterepo: "https://github.com/immuni-app/immuni-app-android.git"
+```
+
+Tags may contain extra characters you don't want to put in your `SoftwareVersion`. 
+In that case you can remove unwanted characters using a regular expression in the
+`remove` parameter.
+
+```yml
+  remove: "Immuni-|build[0-9]+"
+```
 
 ## Build the action
 
