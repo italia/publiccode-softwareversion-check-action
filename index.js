@@ -5,17 +5,17 @@ const simpleGit = require('simple-git');
 
 
 let main = async () => {
+  const currentRepoGit = simpleGit();
+  const remoteRepo = core.getInput('remoterepo')
+  const removeRule = core.getInput('remove')
+  const publiccode = core.getInput('publiccode')
+  const remotePath = `__ghapc_remote_${Math.random().toString(36).substring(2)}_path`
   try {
-    const currentRepoGit = simpleGit();
-    const remoteRepo = core.getInput('remoterepo')
-    const removeRule = core.getInput('remove')
-    const remotePath = `__ghapc_remote_${Math.random().toString(36).substring(2)}_path`
     if (remoteRepo) {
       await currentRepoGit.clone(remoteRepo, remotePath)
     }
     const checkDataGit = simpleGit(remoteRepo ? remotePath : null);
     let tag = (await checkDataGit.tags()).latest
-    const publiccode = core.getInput('publiccode')
     let docContent = fs.readFileSync(publiccode, 'utf8')
     const doc = yaml.load(docContent)
 
@@ -44,6 +44,9 @@ let main = async () => {
   }
   catch (error) {
     core.setFailed(error)
+  }
+  finally {
+    fs.rmdirSync(remotePath, { recursive: true });
   }
 }
 
