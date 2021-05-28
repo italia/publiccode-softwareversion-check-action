@@ -21,7 +21,7 @@ let main = async () => {
       await currentRepoGit.clone(remoteRepo, remotePath)
     }
     const checkDataGit = simpleGit(remoteRepo ? remotePath : null);
-    const tag = (await checkDataGit.tags()).latest
+    let tag = (await checkDataGit.tags()).latest
     const publiccode = core.getInput('publiccode')
     let docContent = fs.readFileSync(publiccode, 'utf8')
     const doc = yaml.load(docContent)
