@@ -11,6 +11,10 @@ inputs:
     description: 'publiccode.yml path'
     required: false
     default: 'publiccode.yml'
+  remove:
+    description: 'Regular expression applied to the latest tag to remove characters'
+    required: false
+    default: ''
   gitname:
     description: 'Git name configuration for bump commit'
     required: false

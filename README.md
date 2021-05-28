@@ -19,6 +19,8 @@ The following inputs briefly explained here are fully declared and documented in
 
 * `publiccode` [**Optional**] - publiccode.yml path (default `publiccode.yml`)
 
+* `remove` [**Optional**] - Regular expression applied to the latest tag to remove characters (default `''`)
+
 * `gitname` [**Optional**] - Git name configuration for bump commit if you use a Pull Request action (default `Publiccode bot`)
 
 * `gitmail` [**Optional**] - Git mail configuration for bump commit if you use a Pull Request action (default `''`)
