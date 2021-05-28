@@ -8,7 +8,7 @@ This action checks whether `softwareVersion` and `releaseDate` in your
 aligned with the latest tag. It's also ready to work in conjunction with
 `peter-evans/create-pull-request` action to update fields in `publiccode.yml` 
 using a pull request. You can also specify a remote repository, see 
-[Deal with a remote repository](#deal-with-an-remote-repository)
+[Deal with a remote repository](#deal-with-a-remote-repository)
 
 Click `Use this template` button to create your action based on this template.
 
