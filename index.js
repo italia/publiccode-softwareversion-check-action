@@ -16,9 +16,9 @@ let main = async () => {
       await currentRepoGit.clone(remoteRepo, remotePath)
     }
     const checkDataGit = simpleGit(remoteRepo ? remotePath : null);
-    let tags = await checkDataGit.tags()
+    let tags = (await checkDataGit.tags()).all
     if (filterRule) {
-      tags = tags.all.filter(el => el.match(new RegExp(filterRule, 'g')))
+      tags = tags.filter(el => el.match(new RegExp(filterRule, 'g')))
     }
     let tag = tags.pop()
 
