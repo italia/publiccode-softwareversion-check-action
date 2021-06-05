@@ -8,6 +8,7 @@ let main = async () => {
   const currentRepoGit = simpleGit();
   const remoteRepo = core.getInput('remoterepo')
   const removeRule = core.getInput('remove')
+  const filterRule = core.getInput('filter')
   const publiccode = core.getInput('publiccode')
   const remotePath = `__ghapc_remote_${Math.random().toString(36).substring(2)}_path`
   try {
@@ -15,13 +16,18 @@ let main = async () => {
       await currentRepoGit.clone(remoteRepo, remotePath)
     }
     const checkDataGit = simpleGit(remoteRepo ? remotePath : null);
-    let tag = (await checkDataGit.tags()).latest
-    let docContent = fs.readFileSync(publiccode, 'utf8')
-    const doc = yaml.load(docContent)
+    let tags = await checkDataGit.tags()
+    if (filterRule) {
+      tags = tags.all.filter(el => el.match(new RegExp(filterRule, 'g')))
+    }
+    let tag = tags.pop()
 
     if (tag && removeRule) {
       tag = tag.replace(new RegExp(removeRule, 'g'), '')
     }
+
+    let docContent = fs.readFileSync(publiccode, 'utf8')
+    const doc = yaml.load(docContent)
 
     if (tag && doc.softwareVersion !== tag) {
       const tagDates = (await checkDataGit.tag(

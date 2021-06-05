@@ -15,6 +15,10 @@ inputs:
     description: 'Regular expression applied to the latest tag to remove characters'
     required: false
     default: ''
+  filter:
+    description: 'Regular expression applied to filter tags'
+    required: false
+    default: ''
   gitname:
     description: 'Git name configuration for bump commit'
     required: false
