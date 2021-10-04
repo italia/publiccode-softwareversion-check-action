@@ -28,7 +28,10 @@ let main = async () => {
 
     let docContent = fs.readFileSync(publiccode, 'utf8')
     const doc = yaml.load(docContent)
-
+    if (!doc.softwareVersion) {
+        doc.softwareVersion = tag || "v0.0.0";
+        yaml.dump(doc);
+    }
     if (tag && doc.softwareVersion !== tag) {
       const tagDates = (await checkDataGit.tag(
         {"-l" : null, "--sort":"creatordate", "--format": "%(creatordate:short)"})
