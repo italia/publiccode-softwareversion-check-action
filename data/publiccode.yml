@@ -1,12 +1,12 @@
 publiccodeYmlVersion: '0.2'
 applicationSuite: italia-action
-url: https://github.com/italia/awesome-italia
+url: https://github.com/italia/.github
 name: awesome-italia
 releaseDate: '2020-02-24'
 softwareType: standalone/web
 softwareVersion: v0.1.1
 developmentStatus: stable
-logo: logo.png
+logo: awesome-italia.png
 platforms:
   - browser
 usedBy:
