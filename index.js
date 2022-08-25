@@ -44,7 +44,7 @@ let main = async () => {
       docContent = docContent.replace(/releaseDate:.*/, `releaseDate: '${tagDate}'`)
       fs.writeFileSync(publiccode, docContent, 'utf8')
       fs.rmdirSync(remotePath, { recursive: true });
-      currentRepoGit.add('.').commit(`feat: bump ${publiccode} to version ${tag}`)
+      currentRepoGit.add('.').commit(`chore: bump ${publiccode} to version ${tag}`)
       throw `Current ${publiccode} should contain ${tag} version`
     }
   }
