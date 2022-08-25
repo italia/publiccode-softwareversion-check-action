@@ -1,6 +1,6 @@
 {
   "name": "publiccode-softwareversion-check-action",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "JavaScript GitHub action to check publiccode.yml softwareVersion automatically",
   "main": "index.js",
   "scripts": {
